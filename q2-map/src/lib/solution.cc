@@ -1,77 +1,46 @@
 #include "solution.h"
 
-// overload 1
-int Solution::add(int a, int b)
+// total runtime = O(3 + n*log(n) + n^2) --> O(n^2)
+std::vector<int> Solution::fit_sum(std::vector<int> v, int sum)
 {
-  int result = a + b;
-  // handle overflow
-  if (a > 0 && b > 0 && result < 0)
+  // input validation
+  if(v.empty() || 
+    v.size() > v.max_size() ||
+    v.size() < 0) // handle int overflow
   {
-    result = INT32_MAX;
+    printf("input invalid\n");
+    return {};
   }
-  else if (a < 0 && b < 0 && result > 0)
+  printf("v.size = %d\n", v.size());
+  printf("v.max_size() = %d\n", v.max_size());
+
+  // result to return
+  std::vector<int> result = {};
+
+  // create map out of v vector for log(n) lookup time
+  std::map<int,int> val_map;
+  // ***** total runtime = O(n*log(n)) (where n = v.size()) *****
+  for(int i = 0; i < (int)v.size(); i++) // O(n)
   {
-    result = INT32_MIN;
+    val_map.insert(std::pair<int,int>(v[i], i)); // O(log(n))
   }
-  
+
+  // loop through map key set to see if we can fit the given sum
+  // ***** total runtime = O(n^2) *****
+  for (auto n : val_map) // O(n)
+  {
+    for(auto m : val_map) // O(n)
+    {
+      if(n.first + m.first == sum) // O(1)
+      {
+        result.push_back(n.second); // O(1)
+        result.push_back(m.second); // O(1)
+        return result;
+      }
+    }
+  }
+  // if we have found nothing, return an empty array
   return result;
 }
 
-// overload 2
-std::string Solution::add(std::string& a, std::string& b)
-{
-  std::string result;
-  long unsigned int total_size = a.size() + b.size();
 
-  if (total_size <= result.max_size())
-  {
-    result.append(a);
-    result.append(b);
-  }
-  else
-  {
-    result.append("invalid: input string(s) too large!");
-  }
-
-  return result;
-}
-
-// overload 3
-std::string Solution::add(std::string& a, int b)
-{
-  std::string result;
-  std::string b_str = std::to_string(b);
-  long unsigned int total_size = a.size() + b_str.size();
-
-  if (total_size <= result.max_size())
-  {
-    result.append(a);
-    result.append(b_str);
-  }
-  else
-  {
-    result.append("invalid: input string(s) too large!");
-  }
-  
-  return result;
-}
-
-// overload 4
-std::string Solution::add(int a, std::string& b)
-{
-  std::string result;
-  std::string a_str = std::to_string(a);
-  long unsigned int total_size = a_str.size() + b.size();
-
-  if (total_size <= result.max_size())
-  {
-    result.append(a_str);
-    result.append(b);
-  }
-  else
-  {
-    result.append("invalid: input string(s) too large!");
-  }
-
-  return result;
-}

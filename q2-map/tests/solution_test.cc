@@ -1,153 +1,74 @@
 #include "src/lib/solution.h"
 #include "gtest/gtest.h"
 #include <vector>
-/**************** add() overload1 ****************/
-TEST(ADD_OVERLOAD1_INT_TEST, STANDARD) {
+
+TEST(FIT_SUM_TEST, PROVIDED_TEST_CASE1) {
   Solution solution;
-  int a = 1;
-  int b = 2;
-  int actual = solution.add(a, b);
-  int expected = 3;
+  std::vector<int> input = {3, 7, 11, 15};
+  int sum = 10;
+  std::vector<int> actual = solution.fit_sum(input, sum);
+  std::vector<int> expected = {0, 1};
   EXPECT_EQ(expected, actual);
 }
 
-TEST(ADD_OVERLOAD1_INT_TEST, ZEROS) {
+TEST(FIT_SUM_TEST, PROVIDED_TEST_CASE2) {
   Solution solution;
-  int a = 0;
-  int b = 0;
-  int actual = solution.add(a, b);
-  int expected = 0;
+  std::vector<int> input = {3, 7, 11, 15};
+  int sum = 180;
+  std::vector<int> actual = solution.fit_sum(input, sum);
+  std::vector<int> expected = {};
   EXPECT_EQ(expected, actual);
 }
 
-TEST(ADD_OVERLOAD1_INT_TEST, POS_TO_NEG_OVERFLOW) {
+TEST(FIT_SUM_TEST, PROVIDED_TEST_CASE3) {
   Solution solution;
-  int a = INT32_MAX;
-  int b = 10;
-  int actual = solution.add(a, b);
-  int expected = INT32_MAX;
+  std::vector<int> input = {1, 4, 3, 2};
+  int sum = 5;
+  std::vector<int> actual = solution.fit_sum(input, sum);
+  std::vector<int> expected = {0, 1};
   EXPECT_EQ(expected, actual);
 }
 
-TEST(ADD_OVERLOAD1_INT_TEST, NEG_TO_POS_OVERFLOW) {
+TEST(FIT_SUM_TEST, EMPTY) {
   Solution solution;
-  int a = INT32_MIN;
-  int b = -10;
-  int actual = solution.add(a, b);
-  int expected = INT32_MIN;
+  std::vector<int> input = {};
+  int sum = 180;
+  std::vector<int> actual = solution.fit_sum(input, sum);
+  std::vector<int> expected = {};
   EXPECT_EQ(expected, actual);
 }
 
-/**************** add() overload2 ****************/
-TEST(ADD_OVERLOAD2_STRINGS_TEST, STANDARD) {
+TEST(FIT_SUM_TEST, NEGATIVES) {
   Solution solution;
-  std::string a = "a";
-  std::string b = "b";
-  std::string actual = solution.add(a, b);
-  std::string expected = "ab";
+  std::vector<int> input = {-1, -2, -3, -4, -5};
+  int sum = -9;
+  std::vector<int> actual = solution.fit_sum(input, sum);
+  std::vector<int> expected = {4, 3};
   EXPECT_EQ(expected, actual);
 }
 
-TEST(ADD_OVERLOAD2_STRINGS_TEST, EMPTY_1) {
-  Solution solution;
-  std::string a = "";
-  std::string b = "b";
-  std::string actual = solution.add(a, b);
-  std::string expected = "b";
-  EXPECT_EQ(expected, actual);
-}
-
-TEST(ADD_OVERLOAD2_STRINGS_TEST, EMPTY_2) {
-  Solution solution;
-  std::string a = "a";
-  std::string b = "";
-  std::string actual = solution.add(a, b);
-  std::string expected = "a";
-  EXPECT_EQ(expected, actual);
-}
-
-TEST(ADD_OVERLOAD2_STRINGS_TEST, EMPTY_BOTH) {
-  Solution solution;
-  std::string a = "";
-  std::string b = "";
-  std::string actual = solution.add(a, b);
-  std::string expected = "";
-  EXPECT_EQ(expected, actual);
-}
-
-// TEST(ADD_OVERLOAD2_STRINGS_TEST, STRING_TOO_LARGE) {
+// TEST(FIT_SUM_TEST, LARGE) {
 //   Solution solution;
-//   std::string a;
-//   for (int i = 0; i < a.max_size(); i++)
+//   std::vector<int> input;
+//   for (int i = 0; i < input.max_size(); i++)
 //   {
-//     a.append("a");
+//     input.push_back(i);
 //   }
-//   std::string b = "b";
-//   std::string actual = solution.add(a, b);
-//   std::string expected = "invalid: input string(s) too large!";
+//   int sum = 1;
+//   std::vector<int> actual = solution.fit_sum(input, sum);
+//   std::vector<int> expected = {0, 1};
 //   EXPECT_EQ(expected, actual);
 // }
 
-/**************** add() overload3 ****************/
-TEST(ADD_OVERLOAD3_STRING_INT_TEST, STANDARD) {
-  Solution solution;
-  std::string a = "a";
-  int b = 1;
-  std::string actual = solution.add(a, b);
-  std::string expected = "a1";
-  EXPECT_EQ(expected, actual);
-}
-
-TEST(ADD_OVERLOAD3_STRING_INT_TEST, EMPTY_STRING) {
-  Solution solution;
-  std::string a = "";
-  int b = 1;
-  std::string actual = solution.add(a, b);
-  std::string expected = "1";
-  EXPECT_EQ(expected, actual);
-}
-
-// TEST(ADD_OVERLOAD3_STRING_INT_TEST, STRING_TOO_LARGE) {
+// TEST(FIT_SUM_TEST, TOO_LARGE) {
 //   Solution solution;
-//   std::string a;
-//   for (int i = 0; i < a.max_size(); i++)
+//   std::vector<int> input;
+//   for (int i = 0; i < input.max_size() + 1; i++)
 //   {
-//     a.append("a");
+//     input.push_back(i);
 //   }
-//   int b = 1;
-//   std::string actual = solution.add(a, b);
-//   std::string expected = "invalid: input string(s) too large!";
-//   EXPECT_EQ(expected, actual);
-// }
-
-/**************** add() overload4 ****************/
-TEST(ADD_OVERLOAD4_INT_STRING_TEST, STANDARD) {
-  Solution solution;
-  int a = 1;
-  std::string b = "b";
-  std::string actual = solution.add(a, b);
-  std::string expected = "1b";
-  EXPECT_EQ(expected, actual);
-}
-
-TEST(ADD_OVERLOAD4_INT_STRING_TEST, EMPTY_STRING) {
-  Solution solution;
-  int a = 1;
-  std::string b = "";
-  std::string actual = solution.add(a, b);
-  std::string expected = "1";
-  EXPECT_EQ(expected, actual);
-}
-
-// TEST(ADD_OVERLOAD4_INT_STRING_TEST, STRING_TOO_LARGE) {
-//   Solution solution;
-//   int a = 1;
-//   std::string b;
-//   for (int i = 0; i < b.max_size(); i++)
-//   {
-//     b.append("b");
-//   }
-//   std::string actual = solution.add(a, b);
-//   std::string expected = "invalid: input string(s) too large!";
+//   int sum = 1;
+//   std::vector<int> actual = solution.fit_sum(input, sum);
+//   std::vector<int> expected = {};
 //   EXPECT_EQ(expected, actual);
 // }

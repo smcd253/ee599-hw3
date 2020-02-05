@@ -4,15 +4,26 @@
 int main()
 {
     Solution solution ;
-    int a = 1;
-    int b = 2;
-    std::string str1 = "ba";
-    std::string str2 = "rump";
-
-    std::cout << solution.add(a, b) << std::endl;
-    std::cout << solution.add(str1, str2) << std::endl;
-    std::cout << solution.add(a, str2) << std::endl;
-    std::cout << solution.add(str1, b) << std::endl;
-
+    std::vector<int> input = {3, 7, 11, 15};
+    int sum = 10;
+    std::vector<int> output = solution.fit_sum(input, sum);
+    if(output.size() == 2)
+    {
+        
+        printf("output = {%d, %d}\n", output[0], output[1]);
+    }
+    else if (output.size() == 0)
+    {
+        printf("output = {}\n");
+    }
+    else
+    {
+        for (auto n : output)
+        {
+            printf("%d", n);
+        }
+        printf("\n");
+    }
+     
     return EXIT_SUCCESS;
 }
