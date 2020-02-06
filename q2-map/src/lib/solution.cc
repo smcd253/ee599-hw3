@@ -11,8 +11,8 @@ std::vector<int> Solution::fit_sum(std::vector<int> v, int sum)
     printf("input invalid\n");
     return {};
   }
-  printf("v.size = %d\n", v.size());
-  printf("v.max_size() = %d\n", v.max_size());
+  printf("v.size = %z\n", v.size());
+  printf("v.max_size() = %z\n", v.max_size());
 
   // result to return
   std::vector<int> result = {};

@@ -46,29 +46,3 @@ TEST(FIT_SUM_TEST, NEGATIVES) {
   std::vector<int> expected = {4, 3};
   EXPECT_EQ(expected, actual);
 }
-
-// TEST(FIT_SUM_TEST, LARGE) {
-//   Solution solution;
-//   std::vector<int> input;
-//   for (int i = 0; i < input.max_size(); i++)
-//   {
-//     input.push_back(i);
-//   }
-//   int sum = 1;
-//   std::vector<int> actual = solution.fit_sum(input, sum);
-//   std::vector<int> expected = {0, 1};
-//   EXPECT_EQ(expected, actual);
-// }
-
-// TEST(FIT_SUM_TEST, TOO_LARGE) {
-//   Solution solution;
-//   std::vector<int> input;
-//   for (int i = 0; i < input.max_size() + 1; i++)
-//   {
-//     input.push_back(i);
-//   }
-//   int sum = 1;
-//   std::vector<int> actual = solution.fit_sum(input, sum);
-//   std::vector<int> expected = {};
-//   EXPECT_EQ(expected, actual);
-// }
