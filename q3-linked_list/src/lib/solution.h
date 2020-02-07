@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <iostream> // for debugging
 
 struct ListNode 
 {
@@ -16,12 +17,15 @@ class SinglyLinkedList
 {
 private:
     int list_size; // internal size variable to amortize size()
+    ListNode* tail_; // Pointer to the last element to amortize push_back() and back()
+    void new_head_tail(int i); // internal function to initialize a list with its first element
 public:
     // default constructor
     SinglyLinkedList()
     {
         // initialize ListNode
-        head_ = nullptr;    
+        head_ = nullptr;
+        tail_ = nullptr;    
         list_size = 0;
     }
 
@@ -37,10 +41,10 @@ public:
 
     ~SinglyLinkedList() 
     {
-        while(!this->empty())
-        {
-            this->pop_back();
-        } 
+        // while(!this->empty())
+        // {
+        //     this->pop_back();
+        // } 
     }   
     bool empty(); // checks if empty
     int size(); // returns size
