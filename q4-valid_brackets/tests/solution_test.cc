@@ -2,6 +2,62 @@
 #include "gtest/gtest.h"
 #include <vector>
 
+TEST(VALID_BRACKETS_TEST, EMPTY) {
+  Solution solution;
+  std::string input = "";
+  bool expected = false;
+  bool actual = solution.valid_brackets(input);
+  EXPECT_EQ(expected, actual);
+}
+
+TEST(VALID_BRACKETS_TEST, BRACKETS_ONLY_SINGULAR) {
+  Solution solution;
+  std::string input = "{}";
+  bool expected = true;
+  bool actual = solution.valid_brackets(input);
+  EXPECT_EQ(expected, actual);
+}
+
+TEST(VALID_BRACKETS_TEST, BRACKETS_ONLY_PLURAL_CONCENTRIC) {
+  Solution solution;
+  std::string input = "[{()}]";
+  bool expected = true;
+  bool actual = solution.valid_brackets(input);
+  EXPECT_EQ(expected, actual);
+}
+
+TEST(VALID_BRACKETS_TEST, BRACKETS_ONLY_PLURAL_CONSECUTIVE) {
+  Solution solution;
+  std::string input = "{}()[]";
+  bool expected = true;
+  bool actual = solution.valid_brackets(input);
+  EXPECT_EQ(expected, actual);
+}
+
+TEST(VALID_BRACKETS_TEST, BRACKETS_SEPARATED) {
+  Solution solution;
+  std::string input = "{} (a, b) [ LIFE IS A GIFT!]";
+  bool expected = true;
+  bool actual = solution.valid_brackets(input);
+  EXPECT_EQ(expected, actual);
+}
+
+TEST(VALID_BRACKETS_TEST, NO_CONTAINMENT_LEADING) {
+  Solution solution;
+  std::string input = " {}";
+  bool expected = false;
+  bool actual = solution.valid_brackets(input);
+  EXPECT_EQ(expected, actual);
+}
+
+TEST(VALID_BRACKETS_TEST, NO_CONTAINMENT_TRAILING) {
+  Solution solution;
+  std::string input = "{} ";
+  bool expected = false;
+  bool actual = solution.valid_brackets(input);
+  EXPECT_EQ(expected, actual);
+}
+
 TEST(VALID_BRACKETS_TEST, PROVIDED_TEST_CASE1) {
   Solution solution;
   std::string input = "(a+b)";

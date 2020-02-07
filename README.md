@@ -134,3 +134,11 @@ Runtime = &theta;(2 + n + 1) --> O(n)
 void SinglyLinkedList::print()
 ```
 Runtime = &theta;(3 + 3n) --> O(n)
+
+## Q4 - Valid Brackets
+**Runtime Analysis**
+
+```
+bool Solution::valid_brackets(std::string input)
+```
+Runtime = &theta;(2 + (2 + 4 + 7)n + 3) --> O(n)
