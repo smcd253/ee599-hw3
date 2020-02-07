@@ -41,10 +41,10 @@ public:
 
     ~SinglyLinkedList() 
     {
-        // while(!this->empty())
-        // {
-        //     this->pop_back();
-        // } 
+        while(!this->empty())
+        {
+            this->pop_back();
+        } 
     }   
     bool empty(); // checks if empty
     int size(); // returns size
@@ -63,6 +63,7 @@ public:
 
     // Prints the list: ex. Empty list: {}. List with items: {1, 2, 3}
     void print();
+
     ListNode* head_; // Pointer to the first element
 };
 #endif
