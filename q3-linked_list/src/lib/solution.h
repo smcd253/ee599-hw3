@@ -43,7 +43,7 @@ public:
     {
         while(!this->empty())
         {
-            this->pop_back();
+            this->pop_front();
         } 
     }   
     bool empty(); // checks if empty

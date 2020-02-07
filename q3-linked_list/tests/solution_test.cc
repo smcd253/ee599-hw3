@@ -25,15 +25,15 @@ TEST(SINGLY_LINKED_LIST_TEST, DEFAULT_CONSTRUCTOR_DYNAMIC)
   delete sll;
 }
 
-// TEST(SINGLY_LINKED_LIST_TEST, DESTRUCTOR)
-// {
-//     SinglyLinkedList* sll = new SinglyLinkedList();
-//     delete sll;
+TEST(SINGLY_LINKED_LIST_TEST, DESTRUCTOR)
+{
+    SinglyLinkedList* sll = new SinglyLinkedList();
+    delete sll;
 
-//     SinglyLinkedList* expected = nullptr;
+    SinglyLinkedList* expected = nullptr;
 
-//     EXPECT_EQ(expected, sll);
-// }
+    EXPECT_EQ(expected, sll);
+}
 
 TEST(SINGLY_LINKED_LIST_TEST, EMPTY_TRUE)
 {
@@ -45,7 +45,7 @@ TEST(SINGLY_LINKED_LIST_TEST, EMPTY_TRUE)
 
 TEST(SINGLY_LINKED_LIST_TEST, EMPTY_FALSE)
 {
-    SinglyLinkedList sll;
+    SinglyLinkedList sll;;
     sll.push_back(1);
     bool expected = false;
     bool actual = sll.empty();
@@ -209,6 +209,38 @@ TEST(SINGLY_LINKED_LIST_TEST, POP_FRONT_POPULATED_PLURAL)
   sll.push_front(4);
   sll.pop_front();
   int actual = sll.head_->val;
+  int expected = 3;
+  EXPECT_EQ(expected, actual);
+}
+
+TEST(SINGLY_LINKED_LIST_TEST, POP_BACK_EMPTY)
+{
+  SinglyLinkedList sll;
+  sll.pop_back();
+  int actual = sll.size();
+  int expected = 0;
+  EXPECT_EQ(expected, actual);
+}
+
+TEST(SINGLY_LINKED_LIST_TEST, POP_BACK_POPULATED_SINGULAR)
+{
+  SinglyLinkedList sll;
+  sll.push_front(1);
+  sll.pop_back();
+  int actual = sll.size();
+  int expected = 0;
+  EXPECT_EQ(expected, actual);
+}
+
+TEST(SINGLY_LINKED_LIST_TEST, POP_BACK_POPULATED_PLURAL)
+{
+  SinglyLinkedList sll;
+  sll.push_back(1);
+  sll.push_back(2);
+  sll.push_back(3);
+  sll.push_back(4);
+  sll.pop_back();
+  int actual = sll.head_->next->next->val;
   int expected = 3;
   EXPECT_EQ(expected, actual);
 }

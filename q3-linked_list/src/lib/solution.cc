@@ -148,12 +148,22 @@ void SinglyLinkedList::pop_back()
     if(this->tail_ != nullptr)
     {
         ListNode* n = this->head_;
-        while(n->next != this->tail_)
+        if(this->tail_ != this->head_)
         {
+            
+            while(n->next != this->tail_)
+            {
+                n = n->next;
+            }
+            this->tail_ = n;
             n = n->next;
+            this->tail_->next = nullptr;
         }
-        n->next = nullptr;
-        this->tail_ = n;
+        else
+        {
+            this->tail_ = nullptr;
+            this->head_ = nullptr;
+        }
         delete n;
         this->list_size--;
     }
