@@ -40,4 +40,97 @@ Linked Lists, Stacks, and Queues
 ## Q2 - Mapping Values to their Indices
 
 **Runtime Analysis**
-&theta;()
+Runtime = &theta;(3 + n*log(n) + n^2) --> O(n^2)
+
+## Q3 - Singly Linked List
+**Runtime Analysis**
+
+```
+SinglyLinkedList()
+```
+Runtime = &theta;(3) --> O(1)
+
+```
+SinglyLinkedList(const std::vector<int> &inputs, int i)
+```
+Runtime = &theta;(2 + 7n + 2) --> O(n)
+
+```
+bool SinglyLinkedList::empty()
+```
+Runtime = &theta;(1) --> O(1)
+
+```
+int SinglyLinkedList::size()
+```
+Runtime = &theta;(1) --> O(1)
+
+```
+void SinglyLinkedList::push_back(int i)
+```
+Runtime = &theta;(5) --> O(1)
+
+```
+void SinglyLinkedList::push_front(int i)
+```
+Runtime = &theta;(5) --> O(1)
+
+```
+void SinglyLinkedList::insert_after(ListNode* p, int i)
+```
+Runtime = &theta;(7) --> O(1)
+
+```
+void SinglyLinkedList::erase(ListNode* p)
+```
+Runtime = &theta;(3 + n + 4) --> O(n)
+
+```
+void SinglyLinkedList::pop_front()
+```
+Runtime = &theta;(6) --> O(1)
+
+```
+void SinglyLinkedList::insert_after(ListNode* p, int i)
+```
+Runtime = &theta;(7) --> O(1)
+
+```
+void SinglyLinkedList::erase(ListNode* p)
+```
+Runtime = &theta;(3 + n + 4) --> O(n)
+
+```
+void SinglyLinkedList::pop_front()
+```
+Runtime = &theta;(6) --> O(1)
+
+```
+void SinglyLinkedList::pop_back()
+```
+Runtime = &theta;(3 + n + 5) --> O(n)
+
+```
+int SinglyLinkedList::back()
+```
+Runtime = &theta;(2) --> O(1)
+
+```
+int SinglyLinkedList::front()
+```
+Runtime = &theta;(2) --> O(1)
+
+```
+ListNode* SinglyLinkedList::GetBackPointer()
+```
+Runtime = &theta;(1) --> O(1)
+
+```
+ListNode* SinglyLinkedList::GetIthPointer(int i)
+```
+Runtime = &theta;(2 + n + 1) --> O(n)
+
+```
+void SinglyLinkedList::print()
+```
+Runtime = &theta;(3 + 3n) --> O(n)

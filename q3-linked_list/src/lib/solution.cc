@@ -1,5 +1,6 @@
 #include "solution.h"
 
+// Runtime = 3 --> O(1)
 void SinglyLinkedList::new_head_tail(int i)
 {
     this->head_ = new ListNode(i);
@@ -7,7 +8,7 @@ void SinglyLinkedList::new_head_tail(int i)
     this->tail_ = this->head_;
 }
 
-// Runtime = O(1)
+// Runtime = 1 --> O(1)
 bool SinglyLinkedList::empty()
 {
     return (this->list_size == 0);
@@ -19,7 +20,7 @@ int SinglyLinkedList::size()
     return this->list_size;
 }
 
-// Runtime = 6 --> O(1)
+// Runtime = 5 --> O(1)
 void SinglyLinkedList::push_back(int i)
 {
     if(this->tail_ != nullptr)
@@ -52,7 +53,7 @@ void SinglyLinkedList::push_front(int i)
 }
 
 // Note: does not check if input node is part of this list.
-// Runtime = 5 --> O(1)
+// Runtime = 7 --> O(1)
 void SinglyLinkedList::insert_after(ListNode* p, int i)
 {
     if(this->head_ != nullptr)
@@ -72,7 +73,7 @@ void SinglyLinkedList::insert_after(ListNode* p, int i)
     this->list_size++;
 }
 
-// Runtime = 2 + n + 3 --> O(n)
+// Runtime = 3 + n + 4 --> O(n)
 void SinglyLinkedList::erase(ListNode* p)
 {
     if(this->head_ != nullptr)
@@ -125,7 +126,7 @@ void SinglyLinkedList::erase(ListNode* p)
     }
 }
 
-// Runtime = 5 --> O(1)
+// Runtime = 6 --> O(1)
 void SinglyLinkedList::pop_front()
 {
     if(this->head_ != nullptr)
@@ -142,7 +143,7 @@ void SinglyLinkedList::pop_front()
     }
 }
 
-// Runtime = 2 + n + 2 --> O(n)
+// Runtime = 3 + n + 5 --> O(n)
 void SinglyLinkedList::pop_back()
 {
     if(this->tail_ != nullptr)
@@ -207,7 +208,7 @@ ListNode* SinglyLinkedList::GetBackPointer()
     return this->tail_;
 }
 
-// Runtime = 2 + i + 1 --> O(n)
+// Runtime = 2 + n + 1 --> O(n)
 ListNode* SinglyLinkedList::GetIthPointer(int i)
 {
     if (this->head_ != nullptr)

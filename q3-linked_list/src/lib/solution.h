@@ -17,10 +17,10 @@ class SinglyLinkedList
 {
 private:
     int list_size; // internal size variable to amortize size()
-    ListNode* tail_; // Pointer to the last element to amortize push_back() and back()
     void new_head_tail(int i); // internal function to initialize a list with its first element
 public:
     // default constructor
+    // Runtime = 3 --> O(1)
     SinglyLinkedList()
     {
         // initialize ListNode
@@ -35,7 +35,44 @@ public:
     - If i is -1, the last item’s next is nullptr.
     - If i is greater than input size, the last item’s next is nullptr.
     */
-    SinglyLinkedList(const std::vector<int> &inputs, int i);
+    // Runtime = 2 + 7n + 2 --> O(n)
+    SinglyLinkedList(const std::vector<int> &inputs, int i)
+    {
+        if((int)inputs.size() > 0 && i >=-1)
+        {            
+            ListNode* con_pt = nullptr;
+            for (int k = (int)inputs.size() - 1; k >= 0; k--)
+            {   
+                ListNode* n = new ListNode(inputs[k]);
+                if(k == (int)inputs.size() - 1)
+                {
+                    head_ = n;
+                    tail_ = head_;
+                    head_->next = nullptr;
+                }
+                else
+                {
+                    n->next = head_;
+                    head_ = n;
+                }
+
+                list_size++;
+
+                if(k == i)
+                {
+                    con_pt = n;
+                }
+            }
+
+            tail_->next = con_pt;
+        }
+        else
+        {
+            head_ = nullptr;
+            tail_ = nullptr;    
+            list_size = 0;
+        }
+    }
 
     // destructor, cleans up
 
@@ -65,5 +102,7 @@ public:
     void print();
 
     ListNode* head_; // Pointer to the first element
+    ListNode* tail_; // Pointer to the last element to amortize push_back() and back()
+
 };
 #endif

@@ -9,8 +9,6 @@ TEST(SINGLY_LINKED_LIST_TEST, DEFAULT_CONSTRUCTOR_STATIC)
   SinglyLinkedList sll;
   std::pair<ListNode*, int> expected(nullptr, 0);
   std::pair<ListNode*, int> actual(sll.head_, sll.size());
-  expected.first = nullptr;
-  expected.second = 0;
   EXPECT_EQ(expected, actual);
 }
 
@@ -19,21 +17,63 @@ TEST(SINGLY_LINKED_LIST_TEST, DEFAULT_CONSTRUCTOR_DYNAMIC)
   SinglyLinkedList* sll = new SinglyLinkedList();
   std::pair<ListNode*, int> expected(nullptr, 0);
   std::pair<ListNode*, int> actual(sll->head_, sll->size());
-  expected.first = nullptr;
-  expected.second = 0;
   EXPECT_EQ(expected, actual);
   delete sll;
 }
 
-TEST(SINGLY_LINKED_LIST_TEST, DESTRUCTOR)
+TEST(SINGLY_LINKED_LIST_TEST, VECTOR_CONSTRUCTOR)
 {
-    SinglyLinkedList* sll = new SinglyLinkedList();
-    delete sll;
-
-    SinglyLinkedList* expected = nullptr;
-
-    EXPECT_EQ(expected, sll);
+  const std::vector<int> vector = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  SinglyLinkedList sll(vector, 2);
+  std::pair<int, int> expected(2, 10);
+  std::pair<int, int> actual(sll.tail_->next->val, sll.size());
+  EXPECT_EQ(expected, actual);
 }
+
+TEST(SINGLY_LINKED_LIST_TEST, VECTOR_CONSTRUCTOR_EMPTY_VECTOR)
+{
+  const std::vector<int> vector = {};
+  SinglyLinkedList sll(vector, 2);
+  std::pair<ListNode*, int> expected(nullptr, 0);
+  std::pair<ListNode*, int> actual(sll.head_, sll.size());
+  EXPECT_EQ(expected, actual);
+}
+
+TEST(SINGLY_LINKED_LIST_TEST, VECTOR_CONSTRUCTOR_OUT_OF_BOUNDS)
+{
+  const std::vector<int> vector = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  SinglyLinkedList sll(vector, 11);
+  std::pair<ListNode*, int> expected(nullptr, 10);
+  std::pair<ListNode*, int> actual(sll.tail_->next, sll.size());
+  EXPECT_EQ(expected, actual);
+}
+
+TEST(SINGLY_LINKED_LIST_TEST, VECTOR_CONSTRUCTOR_CYCLIC)
+{
+  const std::vector<int> vector = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  SinglyLinkedList sll(vector, 0);
+  std::pair<ListNode*, int> expected(sll.head_, 10);
+  std::pair<ListNode*, int> actual(sll.tail_->next, sll.size());
+  EXPECT_EQ(expected, actual);
+}
+
+TEST(SINGLY_LINKED_LIST_TEST, VECTOR_CONSTRUCTOR_SINGLETON)
+{
+  const std::vector<int> vector = {0};
+  SinglyLinkedList sll(vector, 0);
+  std::pair<ListNode*, int> expected(sll.head_, 1);
+  std::pair<ListNode*, int> actual(sll.tail_->next, sll.size());
+  EXPECT_EQ(expected, actual);
+}
+// TEST(SINGLY_LINKED_LIST_TEST, DESTRUCTOR)
+// {
+//     SinglyLinkedList* sll = new SinglyLinkedList();
+//     delete sll;
+
+//     SinglyLinkedList* expected = nullptr;
+
+//     EXPECT_EQ(expected, sll);
+// }
 
 TEST(SINGLY_LINKED_LIST_TEST, EMPTY_TRUE)
 {
@@ -64,7 +104,6 @@ TEST(SINGLY_LINKED_LIST_TEST, SIZE_POPULATED)
 {
     SinglyLinkedList sll;
     sll.push_back(1);
-    printf("back = %d\n", sll.back());
     int expected = 1;
     int actual = sll.size();
     EXPECT_EQ(expected, actual);
@@ -152,9 +191,10 @@ TEST(SINGLY_LINKED_LIST_TEST, INSERT_AFTER_POPULATED_PLURAL)
 TEST(SINGLY_LINKED_LIST_TEST, ERASE_EMPTY)
 {
   SinglyLinkedList sll;
+  testing::internal::CaptureStdout();
   sll.erase(sll.head_);
-  int actual = sll.size();
-  int expected = 0;
+  std::string actual = testing::internal::GetCapturedStdout();
+  std::string expected = "List Empty. Nothing to erase.\n";
   EXPECT_EQ(expected, actual);
 }
 
@@ -184,12 +224,13 @@ TEST(SINGLY_LINKED_LIST_TEST, ERASE_POPULATED_PLURAL)
 TEST(SINGLY_LINKED_LIST_TEST, POP_FRONT_EMPTY)
 {
   SinglyLinkedList sll;
+  testing::internal::CaptureStdout();
   sll.pop_front();
-  int actual = sll.size();
-  int expected = 0;
+  std::string actual = testing::internal::GetCapturedStdout();
+  std::string expected = "List Empty. Nothing to pop.\n";
   EXPECT_EQ(expected, actual);
 }
-
+  
 TEST(SINGLY_LINKED_LIST_TEST, POP_FRONT_POPULATED_SINGULAR)
 {
   SinglyLinkedList sll;
@@ -216,9 +257,10 @@ TEST(SINGLY_LINKED_LIST_TEST, POP_FRONT_POPULATED_PLURAL)
 TEST(SINGLY_LINKED_LIST_TEST, POP_BACK_EMPTY)
 {
   SinglyLinkedList sll;
+  testing::internal::CaptureStdout();
   sll.pop_back();
-  int actual = sll.size();
-  int expected = 0;
+  std::string actual = testing::internal::GetCapturedStdout();
+  std::string expected = "List Empty. Nothing to pop.\n";
   EXPECT_EQ(expected, actual);
 }
 
