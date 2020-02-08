@@ -142,3 +142,72 @@ Runtime = &theta;(3 + 3n) --> O(n)
 bool Solution::valid_brackets(std::string input)
 ```
 Runtime = &theta;(2 + (2 + 4 + 7)n + 3) --> O(n)
+
+## Q5 - Class Academic Record
+**Runtime Analysis**
+
+```
+AcademicRecord() : max_grade(100), min_grade(0), math(0), computers(0), physics(0) {}
+```
+Runtime = &theta;(5) --> O(1)
+
+```
+AcademicRecord(int x, int y, int z) : max_grade(100), min_grade(0), math(x), computers(y), physics(z) {}
+```
+Runtime = &theta;(5) --> O(1)
+
+```
+AcademicRecord(const AcademicRecord& src)
+```
+Runtime = &theta;(6) --> O(1)
+
+```
+AcademicRecord& operator=(const AcademicRecord& rhs)
+```
+Runtime = &theta;(6) --> O(1)
+
+```
+void AcademicRecord::check_bounds()
+```
+Runtime = &theta;(6) --> O(1)
+
+```
+AcademicRecord operator++()
+```
+Runtime =  &theta;(3 + 6 + 1) --> O(1)
+
+```
+AcademicRecord operator++(int)
+```
+Runtime =  &theta;(3 + 6 + 1) --> O(1)
+
+```
+AcademicRecord operator--()
+```
+Runtime =  &theta;(3 + 6 + 1) --> O(1)
+
+```
+AcademicRecord operator--(int)
+```
+Runtime =  &theta;(3 + 6 + 1) --> O(1)
+
+```
+AcademicRecord operator+=(int i)
+```
+Runtime =  &theta;(3 + 6 + 1) --> O(1)
+
+```
+AcademicRecord operator-=(int i)
+```
+Runtime =  &theta;(3 + 6 + 1) --> O(1)
+
+```
+bool operator==(const AcademicRecord& rhs)
+```
+Runtime =  &theta;(11) --> O(1)
+
+```
+std::string print() const;
+```
+Runtime =  &theta;(4 + 36 + 2) --> O(1)
+

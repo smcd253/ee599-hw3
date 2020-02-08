@@ -1,100 +1,7 @@
 #include "solution.h"
 
-
-/****** Constructors ******/
-// copy constructor
-// inline AcademicRecord::AcademicRecord(const AcademicRecord& src)
-// {
-//     this->math = src.math;
-//     this->computers = src.computers;
-//     this->physics = src.physics;
-// }
-
-// assignment operator
-// AcademicRecord& AcademicRecord::operator=(const AcademicRecord& rhs)
-// {
-//     this->math = rhs.math;
-//     this->computers = rhs.computers;
-//     this->physics = rhs.physics;
-// }
-
-/****** Destructors ******/
-// AcademicRecord::~AcademicRecord()
-// {
-//     delete this;
-// }
-
-/****** Other Operators ******/
-// AcademicRecord AcademicRecord::operator++()
-// {
-//     this->math += 10;
-//     this->computers += 10;
-//     this->physics += 10;
-//     this->check_bounds();
-// }
-
-// AcademicRecord AcademicRecord::operator++(int)
-// {
-//     this->math += 10;
-//     this->computers += 10;
-//     this->physics += 10;
-//     this->check_bounds();
-// }
-
-// AcademicRecord AcademicRecord::operator--()
-// {
-//     this->math -= 20;
-//     this->computers -= 20;
-//     this->physics -= 20;
-//     this->check_bounds();
-// }
-
-// AcademicRecord AcademicRecord::operator--(int)
-// {
-//     this->math -= 20;
-//     this->computers -= 20;
-//     this->physics -= 20;
-//     this->check_bounds();
-// }
-
-// AcademicRecord AcademicRecord::operator+=(int i)
-// {
-//     this->math += i;
-//     this->computers += i;
-//     this->physics += i;
-//     this->check_bounds();
-// }
-
-// AcademicRecord AcademicRecord::operator-=(int i)
-// {
-//     this->math -= i;
-//     this->computers -= i;
-//     this->physics -= i;
-//     this->check_bounds();
-// }
-
-// bool AcademicRecord::operator==(const AcademicRecord& rhs)
-// {
-//     // bool result = true;
-//     // if(this->math != rhs.math)
-//     // {
-//     //     result = false;
-//     // }
-//     // if(this->computers != rhs.computers)
-//     // {
-//     //     result = false;
-//     // }
-//     // if(this->physics != rhs.physics)
-//     // {
-//     //     result = false;
-//     // }
-
-//     return (this->math == rhs.math) && 
-//             (this->computers == rhs.computers) && 
-//             (this->physics == rhs.physics);
-// }
-
 /****** Other Functions ******/
+// Runtime = 6 --> O(1)
 void AcademicRecord::check_bounds()
 {
     // check upper bounds
@@ -131,14 +38,16 @@ void AcademicRecord::check_bounds()
     }
 }
 
+// Runtime = 4 + 36 + 2 --> O(1)
 std::string AcademicRecord::print() const
 {
     std::string format = "Math::%d\nComputers::%d\nPhysics::%d\n";
     std::string result;
     result.reserve(format.size() + 6); // reserve enough space to hold 3 100s
-    // char buffer[format.size() + 6];
+    char buffer[format.size() + 6];
 
-    sprintf((char*)result.data(), format.data(), 
-            this->computers, this->computers, this->physics);
+    sprintf(buffer, format.data(), 
+            this->math, this->computers, this->physics);
+    result = buffer;
     return result;
 }
