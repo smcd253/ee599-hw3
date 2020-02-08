@@ -7,52 +7,66 @@
 #include <stdarg.h>
 #include <memory> 
 
-class Grades
+class AcademicRecord
 {
   private:
-    int math;
-    int computers;
-    int physics;
-
     // grade bounds
     int max_grade;
     int min_grade;
 
   public:
+    // member variables
+    int math;
+    int computers;
+    int physics;
+
     // constructors
     // default (non-parametrized)
-    Grades() : math(0), computers(0), physics(0), max_grade(100), min_grade(0) {}
+    AcademicRecord() : math(0), computers(0), physics(0), max_grade(100), min_grade(0) {}
     // parametrized
-    Grades(int x, int y, int z) : math(x), computers(y), physics(z), max_grade(100), min_grade(0)  {}
+    AcademicRecord(int x, int y, int z) : math(x), computers(y), physics(z), max_grade(100), min_grade(0)  {}
     /** Rule of Three
       * If a class requires a user-defined destructor, 
       * a user-defined copy constructor, or a user-defined copy assignment operator, 
       * it almost certainly requires all three. 
       * */
     // copy constructor
-    Grades(const Grades& src);
+    AcademicRecord(const AcademicRecord& src)
+    {
+      this->math = src.math;
+      this->computers = src.computers;
+      this->physics = src.physics;
+    }
     // assignment operator
-    Grades& operator=(const Grades& rhs);
+    AcademicRecord& operator=(const AcademicRecord& rhs)
+    {
+      this->math = rhs.math;
+      this->computers = rhs.computers;
+      this->physics = rhs.physics;
+      return *this;
+    }
     // destructor
-    ~Grades();
+    // ~AcademicRecord();
     
     // operators
     void check_bounds(); // prevent operators from going out of bounds
-    Grades operator++(); // prefix overload
-    Grades operator++(int); // postfix overload
-    Grades operator--(); // prefix overload
-    Grades operator--(int); // postfix overload
-    Grades operator+=(int i);
-    Grades operator-=(int i);
-    bool operator==(const Grades& rhs);
-
-    // get functions
-    int get_math();
-    int get_computers();
-    int get_physics();
+    AcademicRecord operator++()
+    {
+      this->math += 10;
+      this->computers += 10;
+      this->physics += 10;
+      this->check_bounds();
+      return *this;
+    }  // prefix overload
+    // AcademicRecord operator++(int); // postfix overload
+    // AcademicRecord operator--(); // prefix overload
+    // AcademicRecord operator--(int); // postfix overload
+    // AcademicRecord operator+=(int i);
+    // AcademicRecord operator-=(int i);
+    bool operator==(const AcademicRecord& rhs);
 
     // print function
     std::string print() const;
-}
+};
 
 #endif

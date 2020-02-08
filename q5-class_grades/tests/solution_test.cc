@@ -1,12 +1,24 @@
 #include "src/lib/solution.h"
 #include "gtest/gtest.h"
-#include <vector>
 
-TEST(FIT_SUM_TEST, PROVIDED_TEST_CASE1) {
-  Solution solution;
-  std::vector<int> input = {3, 7, 11, 15};
-  int sum = 10;
-  std::vector<int> actual = solution.fit_sum(input, sum);
-  std::vector<int> expected = {0, 1};
-  EXPECT_EQ(expected, actual);
+TEST(ACADEMIC_RECORD_TEST, CONSTRUCTOR_DEFAULT) 
+{
+  AcademicRecord test;
+  int actual[3] = {test.math, test.computers, test.physics};
+  int expected[3] = {0, 0, 0};
+  for (int i = 0; i < 3; i++)
+  {
+    EXPECT_EQ(actual[i], expected[i]);
+  }
+}
+
+TEST(ACADEMIC_RECORD_TEST, CONSTRUCTOR_PARAMETRIZED) 
+{
+  AcademicRecord test(1, 2, 3);
+  int actual[3] = {test.math, test.computers, test.physics};
+  int expected[3] = {1, 2, 3};
+  for (int i = 0; i < 3; i++)
+  {
+    EXPECT_EQ(actual[i], expected[i]);
+  }
 }
