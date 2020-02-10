@@ -10,7 +10,7 @@ int main()
     std::vector<int> input = {1, 4, 5, 23, 100, 12, 18, 175};
     vector_interact vi(input);
 
-    FILE* f = fopen("out.txt","w");
+    FILE* f = fopen("/media/shmcdono/Storage/USC/ee599/ee599-hw3/q6-vect_reader/output.txt","w");
 
     while(usr_in != 5)
     { 

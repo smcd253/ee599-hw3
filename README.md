@@ -2,9 +2,8 @@
 Linked Lists, Stacks, and Queues
 
 ## TODO Before Final Submission
-- write example code every every main.cc
 - Q6: runtime analysis of every menu option
-- q3: make sure you have a cyclic test case
+- q6: file write
 
 ## Q1 - Pros and Cons of Various Parameter Options
 
