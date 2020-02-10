@@ -2,10 +2,12 @@
 #define TEMPLATE_SOLUTION_H
 
 #include <iostream>
+#include <fstream>
 #include <stdio.h>
+
+
 #include <string>
 #include <vector>
-#include <map>
 
 class vector_interact
 {

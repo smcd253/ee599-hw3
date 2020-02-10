@@ -211,3 +211,15 @@ std::string print() const;
 ```
 Runtime =  &theta;(4 + 36 + 2) --> O(1)
 
+## Q6 - Interactive Vector Reader
+**Runtime Analysis**
+
+```
+void vector_interact::print_menu(FILE* f)
+```
+Runtime = &theta;(4 + 5n) --> O(n)
+
+```
+void vector_interact::print_result(FILE* f, int usr_in)
+```
+Runtime = &theta;(16) --> O(1)

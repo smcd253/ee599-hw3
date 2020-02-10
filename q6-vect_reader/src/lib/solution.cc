@@ -13,6 +13,7 @@ std::string menu =
 "\t5. Exit.\n" 
 "*********************************************************************\n";
 
+// Runtime = &theta;(4 + 5n) --> O(n)
 void vector_interact::print_menu(FILE* f)
 {
   // print vector and menu
@@ -37,6 +38,7 @@ void vector_interact::print_menu(FILE* f)
   printf("%s", menu.data());
 }
 
+// Runtime = &theta;(16) --> O(1)
 void vector_interact::print_result(FILE* f, int usr_in)
 {
   int i = 0;
@@ -44,7 +46,9 @@ void vector_interact::print_result(FILE* f, int usr_in)
   {
       fprintf(f, "Enter the value of i::\n");
       printf("Enter the value of i::\n");
-      std::cin >> i;
+      
+      while((i = (int)fgetc(stdin) - 48) < 0){}
+      fputc((char)i, f);
       if (i <= -1)
       {
         fprintf(f, "Output: i cannot be negative.\n");
@@ -62,13 +66,16 @@ void vector_interact::print_result(FILE* f, int usr_in)
   {
     return;
   }
+
   if(i >= (int)this->my_vector.size())
   {
+    fprintf(f, "Output: Sorry! You cannot traverse %d elements from your current location.\n", i);
     printf("Output: Sorry! You cannot traverse %d elements from your current location.\n", i);
     return;
   }
   else
   {
+    fprintf(f, "%d\n",this->my_vector[i]);
     printf("%d\n",this->my_vector[i]);
   }
 }
