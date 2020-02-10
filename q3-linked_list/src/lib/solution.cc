@@ -231,11 +231,12 @@ void SinglyLinkedList::print()
 {
     if (this->head_ != nullptr)
     {
+        int count = 0;
         ListNode* n = this->head_;
         printf("{");
-        while (n != nullptr)
+        while (n != nullptr && count < this->list_size)
         {
-            if (n->next != nullptr)
+            if (n->next != nullptr && count < this->list_size - 1)
             {
                 printf("%d, ", n->val);
             }
@@ -244,6 +245,7 @@ void SinglyLinkedList::print()
                 printf("%d}\n", n->val);
             }
             n = n->next;
+            count++;
         }
     }
     else

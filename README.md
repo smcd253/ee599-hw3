@@ -1,6 +1,11 @@
 # ee599-hw3
 Linked Lists, Stacks, and Queues
 
+## TODO Before Final Submission
+- write example code every every main.cc
+- Q6: runtime analysis of every menu option
+- q3: make sure you have a cyclic test case
+
 ## Q1 - Pros and Cons of Various Parameter Options
 
 **Passing by Value**
@@ -10,6 +15,14 @@ Linked Lists, Stacks, and Queues
 - Cons
     - Creats a local copy --> uses more memory and takes more time
     - Impractical for large variables (see above)
+- Preferred Use: When you want to use a small datatype to do some calculations, but do not want to change the parameter passed in by the client program.
+Ex:
+```
+int tax(int income, int rate)
+{
+    return income*rate;
+}
+```
 
 **Passing using Pointers**
 - Pros
@@ -19,6 +32,16 @@ Linked Lists, Stacks, and Queues
     - Must dereference to access value
     - Possible to receive nullptr or garbage data, easily braking code if not careful
     - Can corrupt source data if not careful
+- Preferred Use: Passing arrays to a function is more memory efficient and good for iterating when passing using a pointer.
+Ex:
+```
+void swap(int* arr, int i, int j)
+{
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = tem[;]
+}
+```
 
 **Passing using References**
 - Pros
@@ -27,6 +50,14 @@ Linked Lists, Stacks, and Queues
     - This is the *actual* memory location, and not just a pointer to it, so we do not run the risk of getting a nullptr or garbage data. Any error like this will be caught at compile time
 - Cons
     - Can corrupt source data if not careful
+- Preferred Use: When you want to use a function to modify the parameter passed by the client program without returning a new type.
+Ex:
+```
+void growth(int& balance, int rate)
+{
+    balance += balance*rate;
+}
+```
 
 **Passing using const References**
 - Pros
@@ -36,13 +67,55 @@ Linked Lists, Stacks, and Queues
     - Const ensures that we *do not* corrupt the source data
 - Cons
     - Source data is immutable
+- Preferred Use: When you want to do some calculations based on a client parameter usually too large for pass by value;
 
+Ex:
+```
+double gpa(const AcademicRecord& student1)
+{
+    double gpa = 0;
+    for (auto n : student1.classes)
+    {
+        gpa += n.gpa/n.units;
+    }
+    return gpa;
+}
+```
 ## Q2 - Mapping Values to their Indices
+**Compile Instructions**
+Run Sample Code:
+```
+bazel run src/main:main
+```
+
+Run Unit Tests:
+```
+bazel run tests:tests
+// or
+bazel test tests:tests
+```
 
 **Runtime Analysis**
 Runtime = &theta;(3 + n*log(n) + n^2) --> O(n^2)
 
 ## Q3 - Singly Linked List
+**Compile Instructions**
+Run Sample Code:
+```
+bazel run src/main:main
+```
+
+Run Unit Tests:
+```
+bazel run tests:tests
+// or
+bazel test tests:tests
+// to test for memory leaks
+bazel run --run_under=valgrind tests:tests
+```
+
+note: to install valgrind on a Linux-based operating system run `sudo apt-get install valgrind` <br> <br>
+
 **Runtime Analysis**
 
 ```
@@ -136,6 +209,19 @@ void SinglyLinkedList::print()
 Runtime = &theta;(3 + 3n) --> O(n)
 
 ## Q4 - Valid Brackets
+**Compile Instructions**
+Run Sample Code:
+```
+bazel run src/main:main
+```
+
+Run Unit Tests:
+```
+bazel run tests:tests
+// or
+bazel test tests:tests
+```
+
 **Runtime Analysis**
 
 ```
@@ -144,6 +230,19 @@ bool Solution::valid_brackets(std::string input)
 Runtime = &theta;(2 + (2 + 4 + 7)n + 3) --> O(n)
 
 ## Q5 - Class Academic Record
+**Compile Instructions**
+Run Sample Code:
+```
+bazel run src/main:main
+```
+
+Run Unit Tests:
+```
+bazel run tests:tests
+// or
+bazel test tests:tests
+```
+
 **Runtime Analysis**
 
 ```
@@ -212,6 +311,19 @@ std::string print() const;
 Runtime =  &theta;(4 + 36 + 2) --> O(1)
 
 ## Q6 - Interactive Vector Reader
+**Compile Instructions**
+Run Sample Code:
+```
+bazel run src/main:main
+```
+
+Run Unit Tests:
+```
+bazel run tests:tests
+// or
+bazel test tests:tests
+```
+
 **Runtime Analysis**
 
 ```

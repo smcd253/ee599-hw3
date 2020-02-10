@@ -65,15 +65,16 @@ TEST(SINGLY_LINKED_LIST_TEST, VECTOR_CONSTRUCTOR_SINGLETON)
   std::pair<ListNode*, int> actual(sll.tail_->next, sll.size());
   EXPECT_EQ(expected, actual);
 }
-// TEST(SINGLY_LINKED_LIST_TEST, DESTRUCTOR)
-// {
-//     SinglyLinkedList* sll = new SinglyLinkedList();
-//     delete sll;
 
-//     SinglyLinkedList* expected = nullptr;
-
-//     EXPECT_EQ(expected, sll);
-// }
+// to be used with valgrind to test for memory leaks
+TEST(SINGLY_LINKED_LIST_TEST, DESTRUCTOR)
+{
+  SinglyLinkedList* sll = new SinglyLinkedList();
+  sll->push_front(1);
+  ListNode* elem = sll->GetBackPointer();
+  int val = elem->val;
+  delete sll;
+}
 
 TEST(SINGLY_LINKED_LIST_TEST, EMPTY_TRUE)
 {

@@ -4,15 +4,11 @@
 std::vector<int> Solution::fit_sum(std::vector<int> v, int sum)
 {
   // input validation
-  if(v.empty() || 
-    v.size() > v.max_size() ||
-    v.size() < 0) // handle int overflow
+  if(v.empty())
   {
-    printf("input invalid\n");
+    printf("invalid\n");
     return {};
   }
-  printf("v.size = %z\n", v.size());
-  printf("v.max_size() = %z\n", v.max_size());
 
   // result to return
   std::vector<int> result = {};

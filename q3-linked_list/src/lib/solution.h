@@ -38,6 +38,7 @@ public:
     // Runtime = 2 + 7n + 2 --> O(n)
     SinglyLinkedList(const std::vector<int> &inputs, int i)
     {
+        list_size = 0;
         if((int)inputs.size() > 0 && i >=-1)
         {            
             ListNode* con_pt = nullptr;
@@ -70,8 +71,8 @@ public:
         {
             head_ = nullptr;
             tail_ = nullptr;    
-            list_size = 0;
         }
+        printf("new list size = %d\n", list_size);
     }
 
     // destructor, cleans up
@@ -82,7 +83,8 @@ public:
         {
             this->pop_front();
         } 
-    }   
+    } 
+      
     bool empty(); // checks if empty
     int size(); // returns size
     void push_back(int i); // inserts at the back
