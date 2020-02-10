@@ -227,7 +227,7 @@ bazel test tests:tests
 ```
 bool Solution::valid_brackets(std::string input)
 ```
-Runtime = &theta;(2 + (2 + 4 + 7)n + 3) --> O(n)
+Runtime = &theta;(2 + (1 + 3 + 7)n + 3) --> O(n)
 
 ## Q5 - Class Academic Record
 **Compile Instructions**

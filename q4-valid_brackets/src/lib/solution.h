@@ -13,7 +13,7 @@ private:
   char square[3] = "[]";
   std::stack<char> bracket_tracker;
   bool finish_tracking(char* c);
-  bool start_tracking(char* c, int i);
+  void start_tracking(char* c, int i);
 public:
   bool valid_brackets(std::string input);
 };

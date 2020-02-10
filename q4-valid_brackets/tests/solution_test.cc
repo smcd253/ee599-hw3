@@ -5,7 +5,15 @@
 TEST(VALID_BRACKETS_TEST, EMPTY) {
   Solution solution;
   std::string input = "";
-  bool expected = false;
+  bool expected = true;
+  bool actual = solution.valid_brackets(input);
+  EXPECT_EQ(expected, actual);
+}
+
+TEST(VALID_BRACKETS_TEST, NO_BRACKETS) {
+  Solution solution;
+  std::string input = "abcdefg";
+  bool expected = true;
   bool actual = solution.valid_brackets(input);
   EXPECT_EQ(expected, actual);
 }
@@ -45,7 +53,7 @@ TEST(VALID_BRACKETS_TEST, BRACKETS_SEPARATED) {
 TEST(VALID_BRACKETS_TEST, NO_CONTAINMENT_LEADING) {
   Solution solution;
   std::string input = " {}";
-  bool expected = false;
+  bool expected = true;
   bool actual = solution.valid_brackets(input);
   EXPECT_EQ(expected, actual);
 }
@@ -53,7 +61,7 @@ TEST(VALID_BRACKETS_TEST, NO_CONTAINMENT_LEADING) {
 TEST(VALID_BRACKETS_TEST, NO_CONTAINMENT_TRAILING) {
   Solution solution;
   std::string input = "{} ";
-  bool expected = false;
+  bool expected = true;
   bool actual = solution.valid_brackets(input);
   EXPECT_EQ(expected, actual);
 }
@@ -103,5 +111,19 @@ TEST(VALID_BRACKETS_TEST, PROVIDED_TEST_CASE6) {
   std::string input = "{2k++[5--*j]}";
   bool expected = true;
   bool actual = solution.valid_brackets(input);
+  EXPECT_EQ(expected, actual);
+}
+
+TEST(VALID_BRACKETS_TEST, MULTIPLE_TESTS) {
+  Solution solution;
+  std::string input = "(7h+[5c)+7]";
+  bool expected = false;
+  bool actual = solution.valid_brackets(input);
+  EXPECT_EQ(expected, actual);
+  
+  // solution should clean stack to reevaluate next input
+  input = "{2k+[5j]}";
+  expected = true;
+  actual = solution.valid_brackets(input);
   EXPECT_EQ(expected, actual);
 }
