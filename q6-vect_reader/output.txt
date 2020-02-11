@@ -10,4 +10,97 @@ Please choose any of the following options:
 	4. What is the ith element from the current location?
 	5. Exit.
 *********************************************************************
-
+inserting input from main
+1
+1
+*********************************************************************
+*
+Vector: 1,4,5,23,100,12,18,175
+*********************************************************************
+*
+Please choose any of the following options:
+	1. What is the first element?
+	2. What is the last element?
+	3. What is the current element?
+	4. What is the ith element from the current location?
+	5. Exit.
+*********************************************************************
+inserting input from main
+2
+175
+*********************************************************************
+*
+Vector: 1,4,5,23,100,12,18,175
+*********************************************************************
+*
+Please choose any of the following options:
+	1. What is the first element?
+	2. What is the last element?
+	3. What is the current element?
+	4. What is the ith element from the current location?
+	5. Exit.
+*********************************************************************
+inserting input from main
+3
+1
+*********************************************************************
+*
+Vector: 1,4,5,23,100,12,18,175
+*********************************************************************
+*
+Please choose any of the following options:
+	1. What is the first element?
+	2. What is the last element?
+	3. What is the current element?
+	4. What is the ith element from the current location?
+	5. Exit.
+*********************************************************************
+inserting input from main
+1
+1
+*********************************************************************
+*
+Vector: 1,4,5,23,100,12,18,175
+*********************************************************************
+*
+Please choose any of the following options:
+	1. What is the first element?
+	2. What is the last element?
+	3. What is the current element?
+	4. What is the ith element from the current location?
+	5. Exit.
+*********************************************************************
+inserting input from main
+3
+1
+*********************************************************************
+*
+Vector: 1,4,5,23,100,12,18,175
+*********************************************************************
+*
+Please choose any of the following options:
+	1. What is the first element?
+	2. What is the last element?
+	3. What is the current element?
+	4. What is the ith element from the current location?
+	5. Exit.
+*********************************************************************
+inserting input from main
+4
+Enter the value of i::
+2
+5
+*********************************************************************
+*
+Vector: 1,4,5,23,100,12,18,175
+*********************************************************************
+*
+Please choose any of the following options:
+	1. What is the first element?
+	2. What is the last element?
+	3. What is the current element?
+	4. What is the ith element from the current location?
+	5. Exit.
+*********************************************************************
+inserting input from main
+5

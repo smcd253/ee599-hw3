@@ -23,7 +23,7 @@ class vector_interact
     
     // print
     void print_menu(FILE* f);
-    void print_result(FILE* f, int usr_in);
+    void print_result(FILE* f, int usr_in, int auto_in);
 };
 
 #endif

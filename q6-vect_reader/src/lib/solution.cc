@@ -39,7 +39,7 @@ void vector_interact::print_menu(FILE* f)
 }
 
 // Runtime = &theta;(16) --> O(1)
-void vector_interact::print_result(FILE* f, int usr_in)
+void vector_interact::print_result(FILE* f, int usr_in, int auto_in)
 {
   int i = 0;
   if(usr_in == 4)
@@ -47,8 +47,19 @@ void vector_interact::print_result(FILE* f, int usr_in)
       fprintf(f, "Enter the value of i::\n");
       printf("Enter the value of i::\n");
       
-      while((i = (int)fgetc(stdin) - 48) < 0){}
-      fputc((char)i, f);
+      if(auto_in < 0)
+      {
+        while((i = (int)fgetc(stdin) - 48) < 0){}
+        fprintf(f, "%d\n", i);
+
+      }
+      else
+      { 
+        i = auto_in;
+        fprintf(f, "%d\n", i);
+      }
+      
+      
       if (i <= -1)
       {
         fprintf(f, "Output: i cannot be negative.\n");
