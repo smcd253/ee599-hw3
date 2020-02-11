@@ -1,9 +1,8 @@
-# ee599-hw3
-Linked Lists, Stacks, and Queues
+# ee599-hw3 - Linked Lists, Stacks, and Queues
+Created - Spencer McDonough : 02/04/2020
+Last Modified - Spencer McDonough : 02/11/2020
+University of Southern California
 
-## TODO Before Final Submission
-- Q6: runtime analysis of every menu option
-- q6: file write
 
 ## Q1 - Pros and Cons of Various Parameter Options
 
@@ -311,19 +310,21 @@ Runtime =  &theta;(4 + 36 + 2) --> O(1)
 
 ## Q6 - Interactive Vector Reader
 **Compile Instructions**
-Run Sample Code:
+First, `cd` into q6-vect_reader/main/ and modify the args value to be the path of output.txt. This can be done by right clicking on the output file and selecting "copy path."
+Then `cd ..` and run sample code:
 ```
 bazel run src/main:main
 ```
 
-Run Unit Tests:
+**Execution Instruction**
+You will be given the following prompt:
 ```
-bazel run tests:tests
-// or
-bazel test tests:tests
+Enter 1 for user input or 2 for pre-defined input:
 ```
+Enter `2` to generate the output file based on the provided input sequence in the assignment prompt.
+Enter `1` for custom input.
 
-**Runtime Analysis**
+**Runtime Analysis of Functions**
 
 ```
 void vector_interact::print_menu(FILE* f)
@@ -334,3 +335,10 @@ Runtime = &theta;(4 + 5n) --> O(n)
 void vector_interact::print_result(FILE* f, int usr_in)
 ```
 Runtime = &theta;(16) --> O(1)
+
+**Runtime Analysis of Menu Options**
+Menu Item1: Runtime = &theta;(4) --> O(1)
+Menu Item2: Runtime = &theta;(6) --> O(1)
+Menu Item3: Runtime = &theta;(5) --> O(1)
+Menu Item4: Runtime = &theta;(12) --> O(1)
+Menu Item4: Runtime = &theta;(4) --> O(1)
