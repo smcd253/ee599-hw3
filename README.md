@@ -1,5 +1,5 @@
 # ee599-hw3 - Linked Lists, Stacks, and Queues
-Created - Spencer McDonough : 02/04/2020
+Created - Spencer McDonough : 02/03/2020
 Last Modified - Spencer McDonough : 02/11/2020
 University of Southern California
 
